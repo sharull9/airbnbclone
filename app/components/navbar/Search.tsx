@@ -1,0 +1,22 @@
+"use client";
+import { BiSearch } from "react-icons/bi";
+
+type Props = {};
+export default function Search({}: Props) {
+  return (
+    <div className="border-1 w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow cursor-pointer transition">
+      <div className="flex flex-row items-center justify-between">
+        <div className="text-sm font-semibold px-6">Anywhere</div>
+        <div className="hidden sm:block text-sm font-semibold px-6 border-x-2 flex-1 text-center">
+          guests
+        </div>
+        <div className="text-sm font-semibold pl-6 pr-2 text-gray-600 flex flex-row items-center gap-3">
+          <div className="hidden sm:block"></div>
+          <div className="p-2 bg-rose-500 rounded-full text-primaryBg">
+            <BiSearch />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
