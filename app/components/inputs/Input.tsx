@@ -55,7 +55,7 @@ export default function Inputs({
       />
       <label
         className={`absolute
-        text-md
+        text-lg
         duration-150
         transform
         -translate-y-2
