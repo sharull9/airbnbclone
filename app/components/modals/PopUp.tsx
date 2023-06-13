@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 
 type Props = {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
@@ -12,7 +12,7 @@ type Props = {
   footer?: React.ReactElement;
   actionLabel: string;
   disabled?: boolean;
-  secondaryAction: () => void;
+  secondaryAction?: () => void;
   secondaryActionLabel?: string;
 };
 
@@ -81,13 +81,13 @@ export default function PopUp({
       >
         <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto ">
           <div
-            className={`translate duration-300 h-full${
+            className={`transition duration-300 h-full ${
               showModal ? "translate-y-0" : "translate-y-full"
             }
             ${showModal ? "opacity-100" : "opacity-0"}`}
           >
             <div
-              className="translate
+              className="transition
               h-full md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col  w-full bg-white outline-none focus:outline-none"
             >
               <div className="flex items-center p-6 rounded-t justify-center relative border-b-2">
@@ -129,7 +129,6 @@ export default function PopUp({
                     disabled={disabled}
                     label={actionLabel}
                     onClick={handleSubmit}
-                    small
                   />
                 </div>
               </div>

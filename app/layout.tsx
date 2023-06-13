@@ -1,5 +1,5 @@
 import Footer from "./components/Footer";
-import PopUp from "./components/modals/PopUp";
+import RegisterModal from "./components/modals/RegisterModal";
 import Navbar from "./components/navbar/Navbar";
 import "./globals.css";
 import { Nunito } from "next/font/google";
@@ -19,14 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <PopUp
-          isOpen
-          actionLabel="Submit"
-          onClose={() => {}}
-          onSubmit={() => {}}
-          secondaryAction={() => {}}
-          secondaryActionLabel="Login"
-        />
+        <RegisterModal />
         <Navbar />
         {children}
         <Footer />
