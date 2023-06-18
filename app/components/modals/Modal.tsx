@@ -16,7 +16,7 @@ type Props = {
   secondaryActionLabel?: string;
 };
 
-export default function PopUp({
+export default function Modal({
   isOpen,
   onClose,
   onSubmit,
@@ -79,7 +79,7 @@ export default function PopUp({
           focus:outline-none
           bg-neutral-800/70"
       >
-        <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-full md:h-auto ">
+        <div className="relative w-[95%] md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto md:h-auto ">
           <div
             className={`transition duration-300 h-full ${
               showModal ? "translate-y-0" : "translate-y-full"
@@ -98,7 +98,7 @@ export default function PopUp({
                     hover:opacity-70
                     transition
                     absolute
-                    left-9
+                    right-9
                   "
                   onClick={handleClose}
                 >
@@ -107,7 +107,7 @@ export default function PopUp({
                 <div className="text-lg font-semibold">{title}</div>
               </div>
               <div className="relative p-6 flex-auto">{body}</div>
-              <div className="flex flex-col gap-2 p-6">
+              <div className="flex flex-col gap-2 px-6 pb-6">
                 <div
                   className="
                     flex 
@@ -131,6 +131,7 @@ export default function PopUp({
                     onClick={handleSubmit}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>
