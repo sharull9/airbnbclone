@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
@@ -85,13 +84,13 @@ export default function LoginModal({}: Props) {
         <Button
           icon={FcGoogle}
           label="Continue with Google"
-          onClick={() => {}}
+          onClick={() => signIn("google")}
           outline
         />
         <Button
           icon={AiFillGithub}
           label="Continue with Github"
-          onClick={() => {}}
+          onClick={() => signIn("github")}
           outline
         />
       </div>

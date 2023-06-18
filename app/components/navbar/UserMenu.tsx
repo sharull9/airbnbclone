@@ -1,16 +1,17 @@
 "use client";
 import { useState, useCallback } from "react";
-import { Avatar } from "@mui/material";
+
 import { AiOutlineMenu } from "react-icons/ai";
-import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { toast } from "react-hot-toast";
+import { SafeUser } from "@/app/types";
+import ProfileAvatar from "../Avatar";
 
 type Props = {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 };
 export default function UserMenu({ currentUser }: Props) {
   const registerModal = useRegisterModal();
@@ -34,7 +35,7 @@ export default function UserMenu({ currentUser }: Props) {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar alt="User" src="/placeholder.jpg" />
+            <ProfileAvatar alt={currentUser?.name} src={currentUser?.image} />
           </div>
         </div>
       </div>

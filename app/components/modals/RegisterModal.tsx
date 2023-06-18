@@ -10,6 +10,7 @@ import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Modal from "./Modal";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
 
 type Props = {};
 export default function RegisterModal({}: Props) {
@@ -88,13 +89,13 @@ export default function RegisterModal({}: Props) {
         <Button
           icon={FcGoogle}
           label="Continue with Google"
-          onClick={() => {}}
+          onClick={() => signIn("google")}
           outline
         />
         <Button
           icon={AiFillGithub}
           label="Continue with Github"
-          onClick={() => {}}
+          onClick={() => signIn("github")}
           outline
         />
       </div>
