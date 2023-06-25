@@ -9,8 +9,11 @@ export default function Logo({}: Props) {
   return (
     <div>
       <Image
+        onClick={() => {
+          router.push("/");
+        }}
         src="/logo.png"
-        className="hiddem md:block"
+        className="hiddem md:block cursor-pointer"
         alt="Logo"
         width={100}
         height={100}

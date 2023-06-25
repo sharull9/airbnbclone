@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
@@ -11,9 +11,11 @@ import { toast } from "react-hot-toast";
 import Modal from "./Modal";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 type Props = {};
 export default function RegisterModal({}: Props) {
+  const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,6 +45,10 @@ export default function RegisterModal({}: Props) {
         setIsLoading(false);
       });
   };
+  const toggle = useCallback(() => {
+    loginModal.onOpen();
+    registerModal.onClose();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -107,10 +113,10 @@ export default function RegisterModal({}: Props) {
           font-light
         "
       >
-        <p>
-          Already have an account?{" "}
+        <div className="flex flex-row justify-center items-center gap-2">
+          <div>Already have an account?</div>
           <button
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className="
               text-neutral-800
               cursor-pointer 
@@ -119,7 +125,7 @@ export default function RegisterModal({}: Props) {
           >
             Log in
           </button>
-        </p>
+        </div>
       </div>
     </div>
   );

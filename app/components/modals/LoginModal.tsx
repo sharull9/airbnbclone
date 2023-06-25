@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -50,6 +50,10 @@ export default function LoginModal({}: Props) {
       }
     });
   };
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -102,19 +106,19 @@ export default function LoginModal({}: Props) {
           font-light
         "
       >
-        <p>
-          Already have an account?{" "}
+        <div className="flex flex-row justify-center items-center gap-2">
+          <div>New User?</div>
           <button
-            onClick={registerModal.onClose}
+            onClick={toggle}
             className="
               text-neutral-800
               cursor-pointer 
               hover:underline
             "
           >
-            Log in
+            Create an Account
           </button>
-        </p>
+        </div>
       </div>
     </div>
   );

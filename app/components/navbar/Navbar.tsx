@@ -4,10 +4,13 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import Categories from "./Categories";
 
 type Props = {
   currentUser?: SafeUser | null;
 };
+
+
 
 export default function Navbar({ currentUser }: Props) {
   return (
@@ -21,6 +24,7 @@ export default function Navbar({ currentUser }: Props) {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 }

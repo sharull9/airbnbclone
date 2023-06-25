@@ -9,6 +9,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { toast } from "react-hot-toast";
 import { SafeUser } from "@/app/types";
 import ProfileAvatar from "../Avatar";
+import useRentModal from "@/app/hooks/useRentModal";
 
 type Props = {
   currentUser?: SafeUser | null;
@@ -16,18 +17,26 @@ type Props = {
 export default function UserMenu({ currentUser }: Props) {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-hoverPrimaryBg transition cursor-pointer"
-          onClick={() => {}}
+          onClick={onRent}
         >
-          New
+          Airbnb your home
         </div>
         <div
           className="p-4 md:py-1 md:px-2 border-1 shadow-sm border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow transition "
@@ -48,7 +57,7 @@ export default function UserMenu({ currentUser }: Props) {
                 <MenuItem onClick={() => {}} label="My Favourites" />
                 <MenuItem onClick={() => {}} label="My Reservartions" />
                 <MenuItem onClick={() => {}} label="My Properties" />
-                <MenuItem onClick={() => {}} label="Airbnb My Home" />
+                <MenuItem onClick={rentModal.onOpen} label="Airbnb My Home" />
                 <hr />
                 <MenuItem
                   onClick={() => {
