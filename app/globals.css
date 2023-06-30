@@ -12,3 +12,10 @@ body,
   --primaryBg: 255, 255, 255;
   --hoverPrimaryBg: 245, 245, 245;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}

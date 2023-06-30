@@ -35,7 +35,7 @@ export default function Inputs({
         id={id}
         disabled={disabled}
         {...register(id, { required })}
-        placeholder=" "
+        placeholder={label}
         type={type}
         className={`peer
         w-full
@@ -43,6 +43,7 @@ export default function Inputs({
         pt-6
         font-light
         bg-primaryBg
+        placeholder-transparent
         border-2
         rounded-md
         outline-none
@@ -60,15 +61,15 @@ export default function Inputs({
           text-md
           duration-150 
           transform 
-          -translate-y-3 
-          top-5 
+          -translate-y-4 
+          scale-90
+          top-5
           z-10 
-          origin-[0] 
           ${formatPrice ? "left-9" : "left-4"}
-          peer-placeholder-shown:scale-75
-          peer-placeholder-shown:translate-y-0
-          peer-focus:scale-75
+          peer-placeholder-shown:-translate-y-0
+          peer-placeholder-shown:scale-100
           peer-focus:-translate-y-4
+          peer-focus:scale-90
           ${errors[id] ? "text-rose-500" : "text-zinc-400"}
         `}
       >
