@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 
@@ -8,8 +8,8 @@ type Props = {
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
-  body?: React.ReactElement;
-  footer?: React.ReactElement;
+  body?: ReactElement;
+  footer?: ReactElement;
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
